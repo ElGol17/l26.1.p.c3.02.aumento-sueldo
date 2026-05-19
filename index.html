@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aumento Sueldo</title>
+</head>
+
+<body>
+  <section id="body">
+    <h2>Aumento Sueldo</h2>
+    <button id="body_btNuevoEmpleado">Nuevo Empleado</button>
+    <hr>
+    <table> 
+      <thead>
+        <tr>
+          <th>Cédula</th>
+          <th>Sueldo Actual</th>
+          <th>Tipo</th>
+          <th>Nuevo Sueldo</th>
+        </tr>
+      </thead>
+      <tbody id="body_Empleados"></tbody>
+    </table>
+    <hr>
+    <div>
+      Cantidad de empleados procesados: <span id="body_lblCntEmpleadosProcesados">0</span>
+    </div>
+    <div>
+      El último sueldo base es: <span id="body_lblUltimoSueldoBase">0</span>
+    </div>
+    <div>
+      Cédulas de empleados con sueldo base superior al último: <span id="body_lblCedulasSueldoSuperiorUltimo">-</span>
+    </div>
+    <div>
+      Procesos usados: forEach, push, length, join
+    </div>
+  </section>
+
+  <section id="Empleado" hidden style="margin-top: 20px; border: 1px solid #ccc; padding: 15px; width: 300px;">
+    <h5 id="Empleado_lblEmpleado">Procesar Empleado</h5>
+    <div>
+      <label>Cédula:
+        <input type="text" id="Empleado_inCedula" placeholder="Ej: 555">
+      </label>
+    </div>
+    <div>
+      <label>Sueldo Actual:
+        <input type="number" id="Empleado_inSueldoActual" placeholder="Ej: 200">
+      </label>
+    </div>
+    <div>
+      <label>Tipo: (1: Obrero, 2: Administrativo):
+        <input type="number" id="Empleado_inTipo" placeholder="1 o 2">
+      </label>
+    </div>
+    <br>
+    <button id="Empleado_btCancelar">Cancelar</button>
+    <button id="Empleado_btAceptar">Aceptar</button>
+  </section>
+
+  <script type="module">
+    import Cl_cEmpresa from "./dist/controllers/Cl_cEmpresa.js";
+    import Cl_cEmpleado from "./dist/controllers/Cl_cEmpleado.js";
+
+    import Cl_vEmpresa from "./dist/views/Cl_vEmpresa.js";
+    import Cl_vEmpleado from "./dist/views/Cl_vEmpleado.js";
+
+    const vistaEmpresa = new Cl_vEmpresa();
+    const vistaEmpleado = new Cl_vEmpleado();
+
+    const controladorEmpleado = new Cl_cEmpleado(vistaEmpleado);
+    new Cl_cEmpresa(vistaEmpresa, controladorEmpleado);
+  </script>
+</body>
+
+</html>
